@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace GoStyle.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ReducViewModel : BaseViewModel
     {
         private Item _selectedItem;
 
@@ -17,9 +17,9 @@ namespace GoStyle.ViewModels
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
-        public ItemsViewModel()
+        public ReducViewModel()
         {
-            Title = "Browse";
+            Title = "Mes réductions";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
