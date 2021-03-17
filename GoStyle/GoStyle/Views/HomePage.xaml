@@ -11,7 +11,7 @@
         
     <StackLayout Spacing="10">
         <!--TEXTE DE BIENVENUE-->
-        <Label Text= "Bienvenue sur votre app"
+        <Label Text= "Bienvenue sur GoStyle."
                FontSize="Large"
                FontAttributes="Bold"
                TextColor="Black"
@@ -25,6 +25,11 @@
         <!-- Buttons -->
         <Button Text="Login"
                 HorizontalOptions="CenterAndExpand"
+                BackgroundColor="DarkOliveGreen"
+        />
+        <Button Text="S'inscrire"
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="DarkOliveGreen"
         />
         
         <!-- EQUIVALENT DU BR HTML -->
