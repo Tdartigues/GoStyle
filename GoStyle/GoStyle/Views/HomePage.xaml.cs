@@ -21,5 +21,10 @@ namespace GoStyle.Views
             await Navigation.PushAsync(new RegisterPage());
         }
 
+        async void RedirectToLoginPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
     }
 }
