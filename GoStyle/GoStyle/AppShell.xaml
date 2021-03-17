@@ -30,7 +30,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Accueil" Icon="icon_about.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Title="Accueil" Icon="icon_about.png" ContentTemplate="{DataTemplate local:HomePage}" />
         <ShellContent Title="Mes Réductions" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ReducPage}" />
     </TabBar>
 
@@ -38,9 +38,7 @@
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
+    
 
 
 </Shell>
