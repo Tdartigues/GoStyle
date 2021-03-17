@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ReducPage.xaml.cs">
       <DependentUpon>ReducPage.xaml</DependentUpon>
     </Compile>

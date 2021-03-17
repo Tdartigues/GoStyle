@@ -30,6 +30,7 @@
         <Button Text="S'inscrire"
                 HorizontalOptions="CenterAndExpand"
                 BackgroundColor="DarkOliveGreen"
+                Clicked="RedirectToRegisterPage"
         />
         
         <!-- EQUIVALENT DU BR HTML -->

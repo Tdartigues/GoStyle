@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GoStyle.Views.RegisterPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text= "Formulaire d'inscription"
+               FontSize="Large"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center"
+        />
+            <Label Text="Nom :" FontSize="Medium"/>
+            <Entry
+                x:Name="Nom"
+                MaxLength="20"/>
+            <Label Text="Prénom :" FontSize="Medium"/>
+            <Entry
+                x:Name="Prenom"
+                MaxLength="20"/>
+            <Label Text="Email :" FontSize="Medium"/>
+            <Entry
+                x:Name="Email"
+                Keyboard="Email"
+                MaxLength="60"/>
+            <Label Text="Numéro de téléphone :" FontSize="Medium"/>
+            <Entry
+                x:Name="Numero"
+                MaxLength="10"/>
+            <Label Text="Mot de passe :" FontSize="Medium"/>
+            <Entry
+                x:Name="Password"
+                IsPassword="True"/>
+            <Button VerticalOptions="Center" BackgroundColor="DarkOliveGreen" Text="Inscription" Clicked="RegisterButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

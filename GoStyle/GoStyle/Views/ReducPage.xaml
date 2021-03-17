@@ -14,7 +14,7 @@
         </StackLayout>
     </Grid>-->
 
-    <ListView Margin="10" RowHeight="75">
+    <ListView Margin="10" RowHeight="75" SelectionMode="None">
         <ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
                 <x:String>Voila</x:String>
