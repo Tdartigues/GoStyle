@@ -7,15 +7,15 @@ namespace GoStyle.Services
 {
     public class ReductionServices
     {
-        ReductionServices _reductionServices;
+        private static ReductionServices _reductionServices;
         TinyRestClient _client;
 
         private ReductionServices()
         {
-            _client = new TinyRestClient(new HttpClient(), "http://127.0.0.1:8000/QRCode/");
+            _client = new TinyRestClient(new HttpClient(), "http://51.15.244.170:12053/QRCode/");
         }
 
-        public ReductionServices GetReductionServices()
+        public static ReductionServices GetReductionServices()
         {
             if(_reductionServices is null)
             {
