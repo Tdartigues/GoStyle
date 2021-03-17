@@ -17,7 +17,7 @@
                TextColor="Black"
                HorizontalOptions="Center"
         />
-        <!--IMAGE DE SINGE SUR LE NET-->
+        <!--Logo de l'app-->
         <Image Source="https://media.discordapp.net/attachments/799566225088577588/821362139226439680/GOSTYLE.PNG"
                VerticalOptions="CenterAndExpand"
                HorizontalOptions="Center"
@@ -26,6 +26,7 @@
         <Button Text="Login"
                 HorizontalOptions="CenterAndExpand"
                 BackgroundColor="DarkOliveGreen"
+                Clicked="RedirectToLoginPage"
         />
         <Button Text="S'inscrire"
                 HorizontalOptions="CenterAndExpand"

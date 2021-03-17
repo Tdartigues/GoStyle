@@ -15,5 +15,9 @@ namespace GoStyle.Views
                 new Uri("https://media.discordapp.net/attachments/799566225088577588/821362139226439680/GOSTYLE.PNG")
             ) };
         }
+        async void RedirectToLoginPage (object sender, EventArgs e)
+        {
+            await Navigation.PushAsync (new LoginPage());
+        }
     }
 }
