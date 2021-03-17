@@ -34,7 +34,11 @@ namespace GoStyle.Views
                 else  
                     DisplayAlert("Login Error", "Entrez les bons identifiants", "OK");  
             }  
-        }  
+        }
 
+        async void RedirectToRegisterPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());
+        }
     }
 }

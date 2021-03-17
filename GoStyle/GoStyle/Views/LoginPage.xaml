@@ -36,6 +36,7 @@
                     x:Name= "Registerbutton" 
                     HorizontalOptions="CenterAndExpand"
                     BackgroundColor="DarkOliveGreen"
+                    Clicked="RedirectToRegisterPage"
             />
                     
         </StackLayout>
