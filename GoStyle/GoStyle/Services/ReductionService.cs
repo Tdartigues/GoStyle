@@ -1,20 +1,33 @@
 ﻿using GoStyle.Models;
-using Tiny.RestClient;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Json;
 
 namespace GoStyle.Services
 {
     public class ReductionServices
     {
         private static ReductionServices _reductionServices;
-        TinyRestClient _client;
+        HttpClient _client;
 
+        /// <summary>
+        /// Constructeur de ReductionServices
+        /// </summary>
         private ReductionServices()
         {
-            _client = new TinyRestClient(new HttpClient(), "http://51.15.244.170:12053/QRCode/");
+            _client = new HttpClient();
+            _client.BaseAddress = new Uri("http://51.15.244.170:12053/QRCode/");
+            _client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("*/*"));
         }
 
+        /// <summary>
+        /// Récupère l'instance du singleton
+        /// </summary>
+        /// <returns> L'instance du singleton </returns>
         public static ReductionServices GetReductionServices()
         {
             if(_reductionServices is null)
@@ -26,9 +39,25 @@ namespace GoStyle.Services
                 return _reductionServices;
             }
         }
+
+        /// <summary>
+        /// Récupère une réduction
+        /// </summary>
+        /// <param name="uId">L'id de la réduction</param>
+        /// <returns>Une réduction</returns>
         public async Task<Reduction> GetReductionAsync(string uId)
         {
-            return await _client.GetRequest("Reduction/" + uId).ExecuteAsync<Reduction>();
+            // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            Reduction reduction = await _client.GetFromJsonAsync<Reduction>("Reduction/" + uId + "/");
+
+            if (reduction != null)
+            {
+                return reduction;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
