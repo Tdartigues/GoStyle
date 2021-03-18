@@ -8,7 +8,11 @@
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
-        
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Caméra"
+                 Order="Primary"
+                     Clicked="RedirectToRegisterPage"/>
+    </ContentPage.ToolbarItems>
     <StackLayout Spacing="10">
         <!--TEXTE DE BIENVENUE-->
         <Label Text= "Bienvenue sur GoStyle."
