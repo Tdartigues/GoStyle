@@ -28,7 +28,7 @@ namespace GoStyle.Services
         /// Récupère l'instance du singleton
         /// </summary>
         /// <returns> L'instance du singleton </returns>
-        public static ReductionServices GetReductionServices()
+        public static ReductionServices GetInstance()
         {
             if(_reductionServices is null)
             {
@@ -58,6 +58,11 @@ namespace GoStyle.Services
             {
                 return null;
             }
+        }
+
+        public void SetTocken (String tocken)
+        {
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("tocken " + tocken);
         }
     }
 }

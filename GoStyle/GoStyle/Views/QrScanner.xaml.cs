@@ -20,19 +20,19 @@ namespace GoStyle.Views
         }
         public void scanView_OnScanResult(ZXing.Result result)
         {
-            //Reduction reduction = ReductionServices.GetReductionServices().GetReductionAsync(result.Text).Result;
-            ReductionServices reductionServices = ReductionServices.GetReductionServices();
-            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
-            Console.WriteLine(reduction.nom);
 
+            /*ReductionServices reductionServices = ReductionServices.GetInstance();
+            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
+            Console.WriteLine(reduction.nom);*/
+
+            UserService.getInstance().Connexion("","");
             Device.BeginInvokeOnMainThread(async () =>
             {
 
-                await DisplayAlert("Scanned Result", reduction.nom, "OK");
+                await DisplayAlert("Scanned Result", result.Text, "OK");
 
-
-                //DisplayAlert("Scanned Result", reduction.nom, "OK");
             });
+
         }
     }
 }
