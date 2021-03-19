@@ -37,8 +37,60 @@
             <Entry
                 x:Name="Password"
                 IsPassword="True"/>
+            <!--Amélioration possible : bouton indisponible si RGPD non coché-->
+            <!--<FlexLayout Direction="Column"
+                JustifyContent="SpaceEvenly"
+                AlignItems="Center">
+
+                <FlexLayout.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="VisualStateManager.VisualStateGroups">
+                            <VisualStateGroupList>
+                                <VisualStateGroup>
+                                    <VisualState x:Name="Checked">
+                                        <VisualState.StateTriggers>
+                                            <CompareStateTrigger Property="{Binding Source={x:Reference button}, Path=IsChecked}" Value="True" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Property="IsEnabled" Value="True" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <VisualState.StateTriggers>
+                                            <CompareStateTrigger Property="{Binding Source={x:Reference button}, Path=IsChecked}" Value="False" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </Setter>
+                    </Style>
+                </FlexLayout.Resources>
+            </FlexLayout>-->
+            <!--MENTION RGPD-->
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Cocher la case si vous accepter les mentions " FontSize="Small"/>
+                        <Span Text="RGPD"
+                  TextColor="Blue"
+                  TextDecorations="Underline"
+                              FontSize="Small">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://www.cnil.fr/fr/reglement-europeen-protection-donnees" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+            </Label.FormattedText>
+            </Label>
+            <CheckBox x:Name="RGPD" IsChecked="false" />
             <!--BOUTON DE VALIDATION-->
-            <Button VerticalOptions="Center" BackgroundColor="DarkOliveGreen" Text="Inscription" Clicked="RegisterButton_Clicked"/>
+            <!-- Amélioration possible -> modifié le "IsEnabled"-->
+            <Button x:Name="button" IsEnabled="True" VerticalOptions="Center" BackgroundColor="DarkOliveGreen" Text="Inscription" Clicked="RegisterButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+
