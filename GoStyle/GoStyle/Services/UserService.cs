@@ -1,4 +1,5 @@
 ﻿using GoStyle.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -45,18 +46,16 @@ namespace GoStyle.Services
             if(_user == null)
             {
                 //String passHash = Convert.ToBase64String(SHA512.Create().ComputeHash(Encoding.UTF8.GetBytes(pass)));
-                String passHash = "Tamere";
-                username = "tdarty";
-                Login login = new Login(username, passHash);
-
+                Login login = new Login(username, pass);
                 string jsonString = JsonSerializer.Serialize(login);
                 StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 stringContent.Headers.Add("Content-Length", jsonString.Length.ToString());
                 HttpResponseMessage response = _client.PostAsync(_client.BaseAddress+"login", stringContent).Result;
-                response.EnsureSuccessStatusCode();
-                string responseBody = response.Content.ReadAsStringAsync().Result;
 
-                
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+                JObject jObject = JObject.Parse(responseBody);
+                _user = new User();
+                _user.Tocken = (String)jObject["token"];
                 ReductionServices.GetInstance().SetTocken(_user.Tocken);
                 return true;
             }
@@ -70,8 +69,15 @@ namespace GoStyle.Services
         {
             if (_user is null)
             {
+                String passHash = Convert.ToBase64String(SHA512.Create().ComputeHash(Encoding.UTF8.GetBytes(pass)));
+                Register register = new Register(login, passHash, fn, ln, number);
+                string jsonString = JsonSerializer.Serialize(register);
+                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                stringContent.Headers.Add("Content-Length", jsonString.Length.ToString());
+                HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "register", stringContent).Result;
+                response.EnsureSuccessStatusCode();
+                string responseBody = response.Content.ReadAsStringAsync().Result;
 
-                
                 ReductionServices.GetInstance().SetTocken(_user.Tocken);
                 return true;
             }
@@ -94,5 +100,24 @@ namespace GoStyle.Services
         }
         
 
+    }
+
+    class Register
+    {
+        public String username { get; set; }
+        public String password { get; set; }
+        public String email { get; set; }
+
+        public Register(String login, String pass, String fn, String ln, String number)
+        {
+            this.username = fn + " " + ln; ;
+            this.password = pass;
+            this.email = login;
+        }
+
+        class Res
+        {
+
+        }
     }
 }

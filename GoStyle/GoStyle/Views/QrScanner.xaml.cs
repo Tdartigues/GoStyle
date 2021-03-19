@@ -25,7 +25,11 @@ namespace GoStyle.Views
             Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
             Console.WriteLine(reduction.nom);*/
 
-            UserService.getInstance().Connexion("","");
+            UserService.getInstance().Connexion("tdarty","Tamere");
+            ReductionServices reductionServices = ReductionServices.GetInstance();
+            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
+            Console.WriteLine(reduction.nom);
+
             Device.BeginInvokeOnMainThread(async () =>
             {
 
