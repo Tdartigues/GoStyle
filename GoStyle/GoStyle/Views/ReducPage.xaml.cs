@@ -1,5 +1,4 @@
-﻿using GoStyle.Models;
-using GoStyle.ViewModels;
+﻿using GoStyle.ViewModels;
 using GoStyle.Views;
 using System;
 using System.Collections.Generic;

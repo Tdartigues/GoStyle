@@ -8,6 +8,7 @@
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
+    <!-- Bouton dans la ToolBar pour avoir accès à la caméra-->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Caméra"
                  Order="Primary"

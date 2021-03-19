@@ -8,12 +8,14 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <!--HEADER DE LA PAGE-->
             <Label Text= "Formulaire d'inscription"
                FontSize="Large"
                FontAttributes="Bold"
                TextColor="Black"
                HorizontalOptions="Center"
         />
+            <!--FORMULAIRE-->
             <Label Text="Nom :" FontSize="Medium"/>
             <Entry
                 x:Name="Nom"
@@ -35,6 +37,7 @@
             <Entry
                 x:Name="Password"
                 IsPassword="True"/>
+            <!--BOUTON DE VALIDATION-->
             <Button VerticalOptions="Center" BackgroundColor="DarkOliveGreen" Text="Inscription" Clicked="RegisterButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

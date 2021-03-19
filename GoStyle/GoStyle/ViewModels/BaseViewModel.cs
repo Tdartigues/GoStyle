@@ -1,5 +1,4 @@
-﻿using GoStyle.Models;
-using GoStyle.Services;
+﻿using GoStyle.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +9,6 @@ namespace GoStyle.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

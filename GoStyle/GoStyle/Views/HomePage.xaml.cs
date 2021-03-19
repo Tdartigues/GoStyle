@@ -16,11 +16,13 @@ namespace GoStyle.Views
             ) };
         }
 
+        //Réglage du bouton pour renvoyer sur la page d'inscription
         async void RedirectToRegisterPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());
         }
 
+        //Réglage du bouton pour renvoyer sur la page de connexion
         async void RedirectToLoginPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());

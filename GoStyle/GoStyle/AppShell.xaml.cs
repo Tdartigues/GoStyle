@@ -12,7 +12,7 @@ namespace GoStyle
         {
             InitializeComponent();
            
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
 
     }
