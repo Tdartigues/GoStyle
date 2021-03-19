@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace GoStyle.Services
 {
@@ -18,8 +19,7 @@ namespace GoStyle.Services
         {
             _client = new HttpClient();
             _client.BaseAddress = new Uri("http://51.15.244.170:12053/api/auth/");
-            _client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("*/*"));
+        //   _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
         }
 
         public static UserService getInstance()
@@ -42,13 +42,21 @@ namespace GoStyle.Services
 
         public bool Connexion(String username, String pass)
         {
-            if(_user is null)
+            if(_user == null)
             {
                 //String passHash = Convert.ToBase64String(SHA512.Create().ComputeHash(Encoding.UTF8.GetBytes(pass)));
                 String passHash = "Tamere";
                 username = "tdarty";
                 Login login = new Login(username, passHash);
-                HttpResponseMessage responce = _client.PostAsJsonAsync<Login>("login", login).Result;
+
+                string jsonString = JsonSerializer.Serialize(login);
+                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                stringContent.Headers.Add("Content-Length", jsonString.Length.ToString());
+                HttpResponseMessage response = _client.PostAsync(_client.BaseAddress+"login", stringContent).Result;
+                response.EnsureSuccessStatusCode();
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+
+                
                 ReductionServices.GetInstance().SetTocken(_user.Tocken);
                 return true;
             }
@@ -76,13 +84,13 @@ namespace GoStyle.Services
 
     class Login
     {
-        public String Username { get; set; }
-        public String Password { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
 
         public Login(String username, String password)
         {
-            this.Username = username;
-            this.Password = password;
+            this.username = username;
+            this.password = password;
         }
         
 
