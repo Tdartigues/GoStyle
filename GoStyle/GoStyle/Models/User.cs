@@ -11,5 +11,6 @@ namespace GoStyle.Models
         public String LastName { get; set; }
         public String Number { get; set; }
         public String Tocken { get; set; }
+        public String UserName { get; set; }
     }
 }

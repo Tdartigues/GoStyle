@@ -62,8 +62,12 @@ namespace GoStyle.Services
 
         public void SetTocken (String token)
         {
-            _client.DefaultRequestHeaders.Add("Authorization", "Token " + token);
-            /*_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("tocken ", tocken);*/
+            _client.DefaultRequestHeaders.Add("Authorization", "token " + token);
+        }
+
+        public void RmTocken()
+        {
+            _client.DefaultRequestHeaders.Remove("Authorization");
         }
     }
 }
