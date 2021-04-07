@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GoStyle.Services;
 
 namespace GoStyle.Views
 {
@@ -25,7 +26,7 @@ namespace GoStyle.Views
                 DisplayAlert("CHAMPS VIDE(S) !", "Entrez vos identifiants", "OK");  
             else  
             {  
-                if (Email.Text == "abc@gmail.com" && Password.Text == "1234")  
+                if (UserService.getInstance().Connexion(Email.Text,Password.Text))  
                 {  
                     DisplayAlert("Login Success", "", "Ok");  
                     //Navigate to Homepage after successfully login  

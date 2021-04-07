@@ -14,7 +14,7 @@ namespace GoStyle
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new QrScanner();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

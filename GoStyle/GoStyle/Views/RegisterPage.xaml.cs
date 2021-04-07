@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GoStyle.Services;
 
 namespace GoStyle.Views
 {
@@ -25,9 +26,17 @@ namespace GoStyle.Views
                 DisplayAlert("Champs non remplie(s)", "Veuillez remplir tous les champs", "OK");
             else
             {
-                // Message de validation de l'inscription
-                DisplayAlert("Inscription réussi !", "Vous êtes bien inscrit", "OK");
-                Navigation.PushAsync(new HomePage());
+                if (UserService.getInstance().CreateUser(Email.Text, Password.Text, Prenom.Text, Nom.Text, Numero.Text))
+                {
+                    // Message de validation de l'inscription
+                    DisplayAlert("Inscription réussi !", "Vous êtes bien inscrit", "OK");
+                    Navigation.PushAsync(new HomePage());
+                }
+                else
+                {
+                    DisplayAlert("Une erreur est survenue", "Une erreur est survenue\nVeuillez contacter notre support", "OK");
+                }
+                
             }
         }
     }
