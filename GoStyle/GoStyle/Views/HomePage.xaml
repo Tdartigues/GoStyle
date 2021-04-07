@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoStyle.Views.HomePage"
+             xmlns:vm="clr-namespace:GoStyle.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+    <!-- Bouton dans la ToolBar pour avoir accès à la caméra-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Caméra"
+                 Order="Primary"
+                     Clicked="RedirectToRegisterPage"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="10">
+        <!--TEXTE DE BIENVENUE-->
+        <Label Text= "Bienvenue sur GoStyle."
+               FontSize="Large"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center"
+        />
+        <!--Logo de l'app-->
+        <Image Source="https://media.discordapp.net/attachments/799566225088577588/821362139226439680/GOSTYLE.PNG"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="Center"
+        />
+        <!-- Buttons -->
+        <Button Text="Login"
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="DarkOliveGreen"
+                Clicked="RedirectToLoginPage"
+        />
+        <Button Text="S'inscrire"
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="DarkOliveGreen"
+                Clicked="RedirectToRegisterPage"
+        />
+        
+        <!-- EQUIVALENT DU BR HTML -->
+        <StackLayout HeightRequest="10"></StackLayout>
+    </StackLayout>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    
+
+</ContentPage>

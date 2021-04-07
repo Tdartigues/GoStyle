@@ -7,8 +7,50 @@
              x:Class="GoStyle.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+           
+           <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Bienvenue sur la page de login, connectez vous !"
+                   FontFamily="ROBOTO"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+            
+            <Entry x:Name = "Email"
+                   Placeholder = "Email"
+                   HeightRequest = "40"    
+                   Keyboard = "Email" />
+            
+            <Entry x:Name = "Password" 
+                   Placeholder = "Password"      
+                   HeightRequest = "40"      
+                   IsPassword = "True"/>
+            
+            <Button x:Name= "Loginbutton" 
+                    Text = "Login " 
+                    Clicked="Loginbutton_Clicked"   
+                    FontAttributes = "Bold" 
+                    FontSize = "Large" 
+                    HorizontalOptions = "CenterAndExpand"    
+                    BackgroundColor = "DarkOliveGreen" /> 
+            
+            <Label Padding="10,250,10,0"
+                   Text="Si vous n'avez pas de compte : inscivez vous en cliquant sur le bouton suivant :"
+                   FontAttributes="Italic"
+                   TextColor="Gray"
+                   
+            />
+            
+            <Button Text="S'inscrire"
+                    x:Name= "Registerbutton" 
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="DarkOliveGreen"
+                    Clicked="RedirectToRegisterPage"
+            />
+                    
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+
+<!-- OLD CODE -->
+<!--Form pour login
+<Entry Text="" />
+<Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/> -->
