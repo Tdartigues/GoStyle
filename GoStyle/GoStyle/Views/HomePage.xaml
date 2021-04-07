@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GoStyle.Views.HomePage"
              xmlns:vm="clr-namespace:GoStyle.ViewModels"
-             Title="{Binding Title}">
-    
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="True">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
@@ -12,7 +12,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Caméra"
                  Order="Primary"
-                     Clicked="RedirectToRegisterPage"/>
+                     Clicked="RedirectToCamPage"/>
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="10">
         <!--TEXTE DE BIENVENUE-->

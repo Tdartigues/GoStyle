@@ -28,5 +28,11 @@ namespace GoStyle.Views
             await Navigation.PushAsync(new LoginPage());
         }
 
+        //Réglage du bouton pour renvoyer sur la caméra
+        async void RedirectToCamPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new QrScanner());
+        }
+
     }
 }
