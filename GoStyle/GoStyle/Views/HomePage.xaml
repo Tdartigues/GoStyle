@@ -28,7 +28,7 @@
                HorizontalOptions="Center"
         />
         <!-- Buttons -->
-        <Button Text="Login"
+        <Button Text="Connexion"
                 HorizontalOptions="CenterAndExpand"
                 BackgroundColor="DarkOliveGreen"
                 Clicked="RedirectToLoginPage"

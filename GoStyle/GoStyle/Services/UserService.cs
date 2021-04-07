@@ -142,9 +142,9 @@ namespace GoStyle.Services
 
         public Register(String login, String pass, String fn, String ln, String number)
         {
-            this.username = login;
+            this.username = fn + "_" + ln;
             this.password = pass;
-            this.email = fn + "_" + ln;
+            this.email = login;
         }
     }
 }

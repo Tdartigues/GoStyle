@@ -30,7 +30,7 @@ namespace GoStyle.Views
                 {  
                     DisplayAlert("Login Success", "", "Ok");  
                     //Navigate to Homepage after successfully login  
-                    Navigation.PushAsync(new LoginPage());   
+                    Navigation.PushAsync(new HomePage());   
                 }  
                 else  
                     DisplayAlert("Login Error", "Entrez les bons identifiants", "OK");  
