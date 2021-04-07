@@ -8,9 +8,9 @@
     <ListView Margin="10" RowHeight="75" SelectionMode="None">
         <ListView.ItemsSource>
             <x:Array Type="{x:Type x:String}">
-                <x:String>Voila</x:String>
-                <x:String>Les</x:String>
-                <x:String>Réductions</x:String>
+                <x:String>Bla</x:String>
+                <x:String>Bla</x:String>
+                <x:String>Bla</x:String>
             </x:Array>
         </ListView.ItemsSource>
         <ListView.ItemTemplate>
