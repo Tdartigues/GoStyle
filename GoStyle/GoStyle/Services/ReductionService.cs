@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Json;
+using System.Collections.ObjectModel;
 
 namespace GoStyle.Services
 {
@@ -12,6 +13,7 @@ namespace GoStyle.Services
     {
         private static ReductionServices _reductionServices;
         HttpClient _client;
+        ObservableCollection<Reduction> _reductions = new ObservableCollection<Reduction>();
 
         /// <summary>
         /// Constructeur de ReductionServices
@@ -49,7 +51,7 @@ namespace GoStyle.Services
         {
             // Blocking call! Program will wait here until a response is received or a timeout occurs.
             Reduction reduction = await _client.GetFromJsonAsync<Reduction>("Reduction/" + uId + "/");
-
+            reduction.taux = reduction.taux + '%';
             if (reduction != null)
             {
                 return reduction;
@@ -68,6 +70,11 @@ namespace GoStyle.Services
         public void RmTocken()
         {
             _client.DefaultRequestHeaders.Remove("Authorization");
+        }
+
+        public ObservableCollection<Reduction> GetReductions()
+        {
+            return _reductions;
         }
     }
 }

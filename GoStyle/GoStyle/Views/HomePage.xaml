@@ -12,7 +12,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Caméra"
                  Order="Primary"
-                     Clicked="RedirectToCamPage"/>
+                 Clicked="RedirectToCamPage"/>
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="10">
         <!--TEXTE DE BIENVENUE-->

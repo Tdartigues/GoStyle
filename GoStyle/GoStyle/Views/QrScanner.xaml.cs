@@ -14,29 +14,35 @@ namespace GoStyle.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QrScanner : ContentPage
     {
+        bool i;
         public QrScanner()
         {
             InitializeComponent();
+            if(UserService.getInstance().getUser() is null)
+            {
+                //Message, vous etes pas co, Retour page d'acceuil
+            }
+            i = false;
         }
         public void scanView_OnScanResult(ZXing.Result result)
         {
-
-            /*ReductionServices reductionServices = ReductionServices.GetInstance();
-            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
-            Console.WriteLine(reduction.nom);*/
-
-            UserService.getInstance().Connexion("tdarty","Tamere");
-            ReductionServices reductionServices = ReductionServices.GetInstance();
-            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
-            Console.WriteLine(reduction.nom);
-
-            Device.BeginInvokeOnMainThread(async () =>
+            if (!i)
             {
-
-                await DisplayAlert("Scanned Result", result.Text, "OK");
-
-            });
-
+                i = true;
+                ReductionServices reductionServices = ReductionServices.GetInstance();
+                Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
+                if (reduction is null)
+                {
+                    i = false;
+                }
+                else
+                {
+                    reductionServices.GetReductions().Add(reduction);
+                    i = false;
+                    Navigation.PushAsync(new ReducPage());
+                }
+                
+            }
         }
     }
 }
