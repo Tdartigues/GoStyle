@@ -18,7 +18,10 @@ namespace GoStyle.Views
             InitializeComponent();
             this.BindingContext = new RegisterViewModel();
         }
-
+        async void RetourHomePage()
+        {
+            await Navigation.PopAsync();
+        }
         private void RegisterButton_Clicked(object sender, EventArgs e)
         {
             // vérification que tous les champs soit bien remplis
@@ -30,7 +33,7 @@ namespace GoStyle.Views
                 {
                     // Message de validation de l'inscription
                     DisplayAlert("Inscription réussi !", "Vous êtes bien inscrit", "OK");
-                    Navigation.PushAsync(new HomePage());
+                    RetourHomePage();
                 }
                 else
                 {

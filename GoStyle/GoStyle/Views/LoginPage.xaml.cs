@@ -18,7 +18,12 @@ namespace GoStyle.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
-        
+
+        async void RetourHomePage()
+        {
+            await Navigation.PopAsync();
+        }
+
         private void Loginbutton_Clicked(object sender, EventArgs e)  
         {  
             //null or empty field validation, check weather email and password is null or empty  
@@ -28,9 +33,9 @@ namespace GoStyle.Views
             {  
                 if (UserService.getInstance().Connexion(Email.Text,Password.Text))  
                 {  
-                    DisplayAlert("Login Success", "", "Ok");  
+                    DisplayAlert("Login Success", "", "Ok");
                     //Navigate to Homepage after successfully login  
-                    Navigation.PushAsync(new HomePage());   
+                    RetourHomePage();
                 }  
                 else  
                     DisplayAlert("Login Error", "Entrez les bons identifiants", "OK");  
