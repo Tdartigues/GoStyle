@@ -15,12 +15,19 @@ namespace GoStyle.Views
     public partial class QrScanner : ContentPage
     {
         bool i;
+
+        async void NotConnectedCam ()
+        {
+            await DisplayAlert("Erreur", "Vous n'êtes pas connecté", "Retour page d'accueil");
+            await Navigation.PopAsync();
+        }
+
         public QrScanner()
         {
             InitializeComponent();
             if(UserService.getInstance().getUser() is null)
             {
-                //Message, vous etes pas co, Retour page d'acceuil
+                NotConnectedCam();
             }
             i = false;
         }
