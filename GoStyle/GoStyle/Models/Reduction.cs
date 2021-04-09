@@ -8,6 +8,7 @@ namespace GoStyle.Models
     {
         public string id { get; set; }
         public string nom { get; set; }
-        public string taux { get; set; }
+        public int taux { get; set; }
+        public string textTaux { get; set; }
     }
 }

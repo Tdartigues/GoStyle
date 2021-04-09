@@ -51,7 +51,7 @@ namespace GoStyle.Services
         {
             // Blocking call! Program will wait here until a response is received or a timeout occurs.
             Reduction reduction = await _client.GetFromJsonAsync<Reduction>("Reduction/" + uId + "/");
-            reduction.taux = reduction.taux + '%';
+            reduction.textTaux = reduction.taux.ToString() + '%';
             if (reduction != null)
             {
                 return reduction;

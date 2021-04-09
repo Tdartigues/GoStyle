@@ -9,7 +9,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell  Text="{Binding nom}"
-                           Detail="{Binding taux}"/>
+                           Detail="{Binding textTaux}"/>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

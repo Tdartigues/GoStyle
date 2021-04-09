@@ -14,7 +14,6 @@ namespace GoStyle.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QrScanner : ContentPage
     {
-        bool i;
 
         async void NotConnectedCam ()
         {
@@ -29,27 +28,20 @@ namespace GoStyle.Views
             {
                 NotConnectedCam();
             }
-            i = false;
         }
         public void scanView_OnScanResult(ZXing.Result result)
         {
-            if (!i)
+            ReductionServices reductionServices = ReductionServices.GetInstance();
+            Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
+            if (reduction is null)
             {
-                i = true;
-                ReductionServices reductionServices = ReductionServices.GetInstance();
-                Reduction reduction = reductionServices.GetReductionAsync(result.Text).Result;
-                if (reduction is null)
-                {
-                    i = false;
-                }
-                else
-                {
-                    reductionServices.GetReductions().Add(reduction);
-                    i = false;
-                    Navigation.PushAsync(new ReducPage());
-                }
-                
             }
+            else
+            {
+                reductionServices.GetReductions().Add(reduction);
+                Navigation.PushAsync(new ReducPage());
+            }
+
         }
     }
 }
