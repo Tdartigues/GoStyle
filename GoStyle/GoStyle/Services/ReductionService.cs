@@ -58,7 +58,7 @@ namespace GoStyle.Services
             }
             else
             {
-                return null;
+                return reduction;
             }
         }
 

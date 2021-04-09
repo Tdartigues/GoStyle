@@ -18,26 +18,26 @@ namespace GoStyle.Views
             InitializeComponent();
             this.BindingContext = new RegisterViewModel();
         }
-        async void RetourHomePage()
+        async Task RetourHomePage()
         {
             await Navigation.PopAsync();
         }
-        private void RegisterButton_Clicked(object sender, EventArgs e)
+        async void RegisterButton_Clicked(object sender, EventArgs e)
         {
             // vérification que tous les champs soit bien remplis
             if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Nom.Text) || string.IsNullOrEmpty(Prenom.Text) || string.IsNullOrEmpty(Numero.Text)) 
-                DisplayAlert("Champs non remplie(s)", "Veuillez remplir tous les champs", "OK");
+                await DisplayAlert("Champs non remplie(s)", "Veuillez remplir tous les champs", "OK");
             else
             {
                 if (UserService.getInstance().CreateUser(Email.Text, Password.Text, Prenom.Text, Nom.Text, Numero.Text))
                 {
                     // Message de validation de l'inscription
-                    DisplayAlert("Inscription réussi !", "Vous êtes bien inscrit", "OK");
-                    RetourHomePage();
+                    await DisplayAlert("Inscription réussi !", "Vous êtes bien inscrit", "OK");
+                    await RetourHomePage();
                 }
                 else
                 {
-                    DisplayAlert("Une erreur est survenue", "Une erreur est survenue\nVeuillez contacter notre support", "OK");
+                    await DisplayAlert("Une erreur est survenue", "Une erreur est survenue\nVeuillez contacter notre support", "OK");
                 }
                 
             }

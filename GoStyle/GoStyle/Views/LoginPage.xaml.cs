@@ -19,26 +19,26 @@ namespace GoStyle.Views
             this.BindingContext = new LoginViewModel();
         }
 
-        async void RetourHomePage()
+        async Task RetourHomePage()
         {
             await Navigation.PopAsync();
         }
 
-        private void Loginbutton_Clicked(object sender, EventArgs e)  
+        async void Loginbutton_Clicked(object sender, EventArgs e)  
         {  
             //null or empty field validation, check weather email and password is null or empty  
-            if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))  
-                DisplayAlert("CHAMPS VIDE(S) !", "Entrez vos identifiants", "OK");  
+            if (string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(Password.Text))
+                await DisplayAlert("CHAMPS VIDE(S) !", "Entrez vos identifiants", "OK");  
             else  
             {  
                 if (UserService.getInstance().Connexion(Email.Text,Password.Text))  
-                {  
-                    DisplayAlert("Login Success", "", "Ok");
+                {
+                    await DisplayAlert("Login Success", "", "Ok");
                     //Navigate to Homepage after successfully login  
-                    RetourHomePage();
+                    await RetourHomePage();
                 }  
-                else  
-                    DisplayAlert("Login Error", "Entrez les bons identifiants", "OK");  
+                else
+                    await DisplayAlert("Login Error", "Entrez les bons identifiants", "OK");  
             }  
         }
 
