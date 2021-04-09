@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GoStyle.Services;
+using GoStyle.Models;
+
 namespace TestGoStyle
 {
     /// <summary>
@@ -10,11 +13,10 @@ namespace TestGoStyle
     [TestClass]
     public class UnitTestUserServices
     {
+        UserService userService;
         public UnitTestUserServices()
         {
-            //
-            // TODO: ajoutez ici la logique du constructeur
-            //
+            userService = UserService.getInstance();
         }
 
         private TestContext testContextInstance;
@@ -58,11 +60,36 @@ namespace TestGoStyle
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestGetInstance()
         {
-            //
-            // TODO: ajoutez ici la logique du test
-            //
+            UserService test = UserService.getInstance();
+            Assert.IsNotNull(test);
+        }
+
+        [TestMethod]
+        public void TestGetUserOutCo()
+        {
+            User test = UserService.getInstance().getUser();
+            Assert.IsNull(test);
+        }
+
+        [TestMethod]
+        public void TestConnexion()
+        {
+            bool test = UserService.getInstance().Connexion("t_t","t");
+            Assert.IsTrue(test);
+        }
+
+        public void TestGetUserInCo()
+        {
+            User test = UserService.getInstance().getUser();
+            Assert.IsNotNull(test);
+        }
+
+        public void TestLogout()
+        {
+            bool test = UserService.getInstance().Logout();
+            Assert.IsTrue(test);
         }
     }
 }

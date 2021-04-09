@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace GoStyle.Services
 {
-    class UserService
+    public class UserService
     {
         private static UserService _userService;
         private static User _user;
@@ -122,7 +122,7 @@ namespace GoStyle.Services
         }
     }
 
-    class Login
+    public class Login
     {
         public String username { get; set; }
         public String password { get; set; }
@@ -134,7 +134,7 @@ namespace GoStyle.Services
         }
     }
 
-    class Register
+    public class Register
     {
         public String username { get; set; }
         public String password { get; set; }

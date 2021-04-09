@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GoStyle.Models
 {
-    class User
+    public class User
     {
         public String Login { get; set; }
         public String FirstName { get; set; }
