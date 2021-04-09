@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoStyle.Views.ReducPage"
+             Title="MES REDUCTIONS">
+
+       <!-- AFFICHAGE DES REDUCTIONS -->
+    <ListView Margin="10" RowHeight="75" SelectionMode="None" x:Name="ReducionView" ItemsSource="{Binding reductions}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell  Text="{Binding nom}"
+                           Detail="{Binding textTaux}"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

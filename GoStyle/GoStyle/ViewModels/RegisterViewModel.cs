@@ -2,17 +2,22 @@ using GoStyle.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GoStyle.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
+        public Command RegisterCommand { get; }
 
-        public LoginViewModel()
+        //Pourl label URL
+        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
+
+        public RegisterViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            RegisterCommand = new Command(OnLoginClicked);
         }
 
         private async void OnLoginClicked(object obj)
